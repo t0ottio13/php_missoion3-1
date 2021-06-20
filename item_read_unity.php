@@ -33,10 +33,15 @@ if ($status == false) {
         // echo($record["item_name"] .$record["price"] .$record["price"]+"円" .$record["stock"]+"個") ;
         // echo($record['item_name']);
         // exit;
-        $data = array($record['item_name'],$record["price"],$record["stock"]);
-        $output[]=$data;
-        // var_dump($data);
-        // exit;
+        // $data = array(  'item_name' => $record['item_name'],
+        //                 'price' => $record["price"],
+        //                 'stock' => $record["stock"]
+        //             );
+        $data = array('item_name' => $record['item_name'],
+                                'price' => $record["price"],
+                                'stock' => $record["stock"]
+                    );
+        $output []=  $data;
         // echo($data);
         // $output.= "[{$record["item_name"]},{$record["price"]},{$record["stock"]}]";
         // $output .= "<tr>";
@@ -54,10 +59,13 @@ if ($status == false) {
         // $output .= "</tr>";
         // $output .= "</br>";
     }
-    echo(json_encode($output));
     // echo($output);
     // $recordの参照を解除する．解除しないと，再度foreachした場合に最初からループしない
     // 今回は以降foreachしないので影響なし
+    // var_dump($output);
+    // exit();
+
     unset($record);
+    echo json_encode($output);
 }
 ?>
